@@ -1,0 +1,98 @@
+{
+    "admin": {
+        "full_name": "admin",
+        "email": "admin",
+        "password": "admin",
+        "username": "admin",
+        "status": 1,
+        "orders": {},
+        "shops": []
+    },
+    "q": {
+        "full_name": "q",
+        "email": "q",
+        "password": "q",
+        "username": "q",
+        "status": 1,
+        "orders": {
+            "1": {
+                "shop": 1,
+                "name_shop": "Magnit",
+                "goods": {
+                    "eggs": 4,
+                    "milk": 3
+                },
+                "area": 2,
+                "order_date": "2022-04-06 21:04:53.642426",
+                "order_price": 500,
+                "cost_of_delivery": 2000
+            },
+            "2": {
+                "shop": 1,
+                "name_shop": "Magnit",
+                "goods": {
+                    "eggs": 4,
+                    "milk": 22
+                },
+                "area": 2,
+                "order_date": "2022-04-06 21:05:31.381573",
+                "order_price": 2400,
+                "cost_of_delivery": 2000
+            },
+            "3": {
+                "shop": 2,
+                "name_shop": "Magnit",
+                "goods": {
+                    "eggs": 4,
+                    "milk": 3
+                },
+                "area": 5,
+                "order_date": "2022-04-06 21:16:29.799927",
+                "order_price": 230,
+                "cost_of_delivery": 2000
+            },
+            "4": {
+                "shop": 1,
+                "name_shop": "Magnit",
+                "goods": {
+                    "eggs": 4,
+                    "milk": 3
+                },
+                "area": 5,
+                "order_date": "2022-04-06 21:37:46.275305",
+                "order_price": 500,
+                "cost_of_delivery": 5000
+            }
+        },
+        "shops": [
+            1,
+            2,
+            3,
+            5
+        ]
+    },
+    "w": {
+        "full_name": "w",
+        "email": "w",
+        "password": "w",
+        "username": "w",
+        "status": 0,
+        "orders": {
+            "1": {
+                "shop": 4,
+                "name_shop": "Magnit",
+                "goods": {
+                    "eggs": 4,
+                    "milk": 3
+                },
+                "area": 10,
+                "order_date": "2022-04-06 21:24:45.382787",
+                "order_price": 500,
+                "cost_of_delivery": 0
+            }
+        },
+        "shops": [
+            4
+        ]
+    }
+}

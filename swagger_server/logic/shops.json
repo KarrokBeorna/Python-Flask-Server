@@ -1,0 +1,102 @@
+{
+    "1": {
+        "area": 0,
+        "name": "Magnit",
+        "owner": "q",
+        "goods": {
+            "eggs": 50,
+            "milk": 100,
+            "bread": 35
+        },
+        "orders": {
+            "1": {
+                "order_date": "2022-04-06 21:04:53.644427",
+                "area": 2,
+                "order_price": 500,
+                "goods": {
+                    "eggs": 4,
+                    "milk": 3
+                }
+            },
+            "2": {
+                "order_date": "2022-04-06 21:05:31.383563",
+                "area": 2,
+                "order_price": 2400,
+                "goods": {
+                    "eggs": 4,
+                    "milk": 22
+                }
+            },
+            "3": {
+                "order_date": "2022-04-06 21:37:46.278302",
+                "area": 5,
+                "order_price": 500,
+                "goods": {
+                    "eggs": 4,
+                    "milk": 3
+                }
+            }
+        }
+    },
+    "2": {
+        "area": 3,
+        "name": "Magnit",
+        "owner": "q",
+        "goods": {
+            "eggs": 50,
+            "milk": 10,
+            "bread": 45
+        },
+        "orders": {
+            "1": {
+                "order_date": "2022-04-06 21:16:29.801925",
+                "area": 5,
+                "order_price": 230,
+                "goods": {
+                    "eggs": 4,
+                    "milk": 3
+                }
+            }
+        }
+    },
+    "3": {
+        "area": 5,
+        "name": "Magnit",
+        "owner": "q",
+        "goods": {
+            "eggs": 5,
+            "milk": 100
+        },
+        "orders": {}
+    },
+    "4": {
+        "area": 10,
+        "name": "Magnit",
+        "owner": "w",
+        "goods": {
+            "eggs": 50,
+            "milk": 100
+        },
+        "orders": {
+            "1": {
+                "order_date": "2022-04-06 21:24:45.384792",
+                "area": 10,
+                "order_price": 500,
+                "goods": {
+                    "eggs": 4,
+                    "milk": 3
+                }
+            }
+        }
+    },
+    "5": {
+        "area": 0,
+        "name": "Magnit",
+        "owner": "q",
+        "goods": {
+            "eggs": 50,
+            "milk": 100
+        },
+        "orders": {}
+    }
+}

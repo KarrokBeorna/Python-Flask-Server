@@ -1,0 +1,303 @@
+---
+swagger: "2.0"
+info:
+  description: ""
+  version: "3.0.0"
+  title: "8 sem SavDm - 1.2.104 - Food ordering service"
+  termsOfService: "http://swagger.io/terms/"
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+host: "localhost:8080"
+basePath: "/"
+tags:
+- name: "account"
+- name: "user"
+- name: "vendor"
+schemes:
+- "https"
+- "http"
+paths:
+  /user:
+    post:
+      tags:
+      - "account"
+      summary: "Create user"
+      operationId: "create_user"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Created user object"
+        required: true
+        schema:
+          $ref: "#/definitions/User"
+      responses:
+        "200":
+          description: "User created"
+        "400":
+          description: "Username already in use"
+      x-swagger-router-controller: "swagger_server.controllers.account_controller"
+  /user/login:
+    get:
+      tags:
+      - "account"
+      summary: "Logs user into the system"
+      description: ""
+      operationId: "login_user"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "username"
+        in: "query"
+        required: true
+        type: "string"
+      - name: "password"
+        in: "query"
+        required: true
+        type: "string"
+      responses:
+        "200":
+          description: "successful operation"
+          headers:
+            X-Rate-Limit:
+              type: "integer"
+              format: "int32"
+              description: "calls per hour allowed by the user"
+            X-Expires-After:
+              type: "string"
+              format: "date-time"
+              description: "date in UTC when token expires"
+          schema:
+            type: "string"
+        "400":
+          description: "Invalid username/password supplied"
+      x-swagger-router-controller: "swagger_server.controllers.account_controller"
+  /user/logout:
+    get:
+      tags:
+      - "account"
+      summary: "Logs out current logged in user session"
+      description: ""
+      operationId: "logout_user"
+      produces:
+      - "application/json"
+      parameters: []
+      responses:
+        "200":
+          description: "successful operation"
+        "400":
+          description: "You are not authorized"
+      x-swagger-router-controller: "swagger_server.controllers.account_controller"
+  /user/{username}:
+    get:
+      tags:
+      - "account"
+      summary: "Logout user by username"
+      description: ""
+      operationId: "forced_logout_user"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "username"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        "200":
+          description: "successful operation"
+        "400":
+          description: "You are not logged in with an administrator account"
+      x-swagger-router-controller: "swagger_server.controllers.account_controller"
+  /getShops:
+    get:
+      tags:
+      - "user"
+      summary: "Get shops"
+      description: ""
+      operationId: "get_shops"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters: []
+      responses:
+        "200":
+          description: "successful operation"
+        "400":
+          description: "You are not authorized"
+      x-swagger-router-controller: "swagger_server.controllers.user_controller"
+  /order:
+    post:
+      tags:
+      - "user"
+      summary: "Create order"
+      description: ""
+      operationId: "create_order"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: true
+        schema:
+          $ref: "#/definitions/CreateOrder"
+      responses:
+        "200":
+          description: "successful operation"
+        "400":
+          description: "You are not authorized"
+      x-swagger-router-controller: "swagger_server.controllers.user_controller"
+  /orderHistory:
+    get:
+      tags:
+      - "user"
+      summary: "Displaying order history"
+      operationId: "get_order_history"
+      produces:
+      - "application/json"
+      parameters: []
+      responses:
+        "200":
+          description: "Successful operation"
+        "400":
+          description: "You are not authorized"
+      x-swagger-router-controller: "swagger_server.controllers.user_controller"
+  /shop:
+    post:
+      tags:
+      - "vendor"
+      summary: "Add shop"
+      description: ""
+      operationId: "add_shop"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: true
+        schema:
+          $ref: "#/definitions/AddShop"
+      responses:
+        "200":
+          description: "successful operation"
+        "400":
+          description: "You are not authorized"
+      x-swagger-router-controller: "swagger_server.controllers.vendor_controller"
+  /product:
+    post:
+      tags:
+      - "vendor"
+      summary: "Add product"
+      description: ""
+      operationId: "add_product"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "id_market"
+        in: "query"
+        required: true
+        type: "integer"
+        format: "int64"
+      - name: "product"
+        in: "query"
+        required: true
+        type: "string"
+      - name: "price"
+        in: "query"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        "200":
+          description: "successful operation"
+        "400":
+          description: "You are not authorized"
+      x-swagger-router-controller: "swagger_server.controllers.vendor_controller"
+  /shopHistory:
+    get:
+      tags:
+      - "vendor"
+      summary: "Displaying shop history"
+      operationId: "get_shop_history"
+      produces:
+      - "application/json"
+      parameters: []
+      responses:
+        "200":
+          description: "Successful operation"
+        "400":
+          description: "You are not authorized"
+      x-swagger-router-controller: "swagger_server.controllers.vendor_controller"
+definitions:
+  CreateOrder:
+    type: "object"
+    properties:
+      shop:
+        type: "integer"
+        format: "int64"
+      goods:
+        type: "object"
+        properties:
+          name:
+            type: "string"
+          quantity:
+            type: "integer"
+            format: "int64"
+      area:
+        type: "integer"
+        format: "int64"
+    xml:
+      name: "CreateOrder"
+    example:
+      area: 5
+      shop: 1
+      goods:
+        milk: 3
+        eggs: 4
+  AddShop:
+    type: "object"
+    properties:
+      name:
+        type: "string"
+      goods:
+        type: "object"
+        properties:
+          name:
+            type: "string"
+          price:
+            type: "integer"
+            format: "int64"
+      area:
+        type: "integer"
+        format: "int64"
+    xml:
+      name: "AddShop"
+    example:
+      area: 0
+      name: "Magnit"
+      goods:
+        milk: 100
+        eggs: 50
+  User:
+    type: "object"
+    properties:
+      username:
+        type: "string"
+      fullName:
+        type: "string"
+      email:
+        type: "string"
+      password:
+        type: "string"
+      phone:
+        type: "string"
+    xml:
+      name: "User"
